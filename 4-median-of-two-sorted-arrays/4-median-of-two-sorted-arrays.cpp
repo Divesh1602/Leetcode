@@ -37,7 +37,7 @@ public:
             if(ml1<=mr2 && ml2<=mr1){
                 
                
-             if((sum%2)!=0){
+             if(((n1+n2)%2)!=0){
                   res=max(ml1,ml2);
                 return res;
               }
