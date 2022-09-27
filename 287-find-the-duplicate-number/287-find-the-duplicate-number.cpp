@@ -1,12 +1,17 @@
 class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
-        vector<bool> a(nums.size()-1);
-        for(int i=0;i<nums.size();i++){
-            if(a[nums[i]])
-                return nums[i];
-            a[nums[i]]=true;
+       int a=nums[0];
+    int b=nums[0];
+        do{
+            a=nums[a];
+            b=nums[nums[b]];
+        }while(a!=b);
+            a=nums[0];
+        while(a!=b){
+            a=nums[a];
+            b=nums[b];
         }
-        return 0;
+        return a;
     }
 };
