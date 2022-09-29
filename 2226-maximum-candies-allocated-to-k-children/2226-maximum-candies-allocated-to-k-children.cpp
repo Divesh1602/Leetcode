@@ -13,13 +13,13 @@ public:
     
     int maximumCandies(vector<int>& candies, long long k) {
         int i=1;
-       long long int j=0;
+        int j=INT_MIN;
         int res=0;
         for(auto a:candies){
-            j+=a;
+            j=max(j,a);
         }
         while(i<=j){
-           long long int mid=(i+j)/2;
+            int mid=(i+j)/2;
             if(isfeasible(candies,k,mid)){
                 res=mid;
                 i=mid+1;
