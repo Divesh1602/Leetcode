@@ -4,9 +4,6 @@ public:
         int sum=0;
         for(auto a:A){
             k-=a/ans;
-            // sum+=a%ans;
-            // k-=sum/ans;
-            
             }
          if(k<=0)
                 return true;
