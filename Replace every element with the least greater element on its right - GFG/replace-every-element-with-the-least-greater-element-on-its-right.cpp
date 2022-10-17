@@ -19,11 +19,8 @@ class Solution{
              s.insert(a[i]);
             if(a[i]<mx){
                 auto pos=s.find(a[i]);
-                for(auto j=pos;j!=s.end();j++){
-                    j++;
-                    ans.push_back(*j);
-                    break;
-                }
+                pos++;
+                ans.push_back(*pos);
             }
             else{
                 mx=a[i];
