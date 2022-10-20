@@ -41,7 +41,7 @@ public:
         for(int i=0;i<s.length();i++){
             char ch=s[i];
             int n=value(s[i]);
-            if(n<value(s[i+1])){
+            if(i<s.length()-1 && n<value(s[i+1])){
                 ans-=n;
             }
             else
