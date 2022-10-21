@@ -41,7 +41,7 @@ public:
                     return res;
                 }
                 else{
-                    res=(max(ml1,ml2) + min(mr2,mr1))/2.0;
+                    res=(max(ml1,ml2)+min(mr2,mr1))/2.0;
                     return res;
                 }
             }
