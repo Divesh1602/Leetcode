@@ -17,10 +17,9 @@ public:
             ans+=" ";
             }
         }
-        string ans1="";
-        for(int i=0;i<ans.length()-1;i++){
-            ans1+=ans[i];
-        }
-        return ans1;
+        int n=ans.length();
+        ans.erase(n-1,n);
+       
+        return ans;
     }
 };
