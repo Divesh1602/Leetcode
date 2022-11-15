@@ -6,8 +6,8 @@ public:
         
         
         
-        for(int i=0;i<nums.size();i++){
-            sum+=nums[i];
+        for(auto a:nums){
+            sum+=a;
             sum=sum%k;
             
             
