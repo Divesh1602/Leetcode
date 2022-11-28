@@ -5,10 +5,9 @@ public:
         unordered_map<int,int> m1;
         for(auto a:matches){
             m.insert(a[0]);
-        }
-          for(auto a:matches){
             m1[a[1]]++;
         }
+          
         vector<int> ans;
         vector<vector<int>> res;
         for(auto a :m){
