@@ -20,6 +20,9 @@ vector<int> findSubarray(int a[], int n) {
 	                maxSum = currSum;
 	                ans = temp;
 	            }
+	            else if(currSum == maxSum)
+	            if(ans.size()<temp.size())
+	            ans=temp;
 	            
 	            currSum = 0;
 	            temp.clear();
