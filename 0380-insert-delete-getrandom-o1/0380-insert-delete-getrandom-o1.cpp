@@ -10,7 +10,7 @@ public:
     bool insert(int val) {
         if(m.find(val)==m.end()){
             a.push_back(val);
-            m[val]=a.size()-1;
+            m[val]++;
         return true;
         }
         return false;
