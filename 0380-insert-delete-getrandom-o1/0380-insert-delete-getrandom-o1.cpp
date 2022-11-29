@@ -18,11 +18,8 @@ public:
     
     bool remove(int val) {
         if(m.find(val)!=m.end()){
-            int last_idx=a.back();
-            int idx=m[val];
-            a[idx]=last_idx;
-            a.pop_back();
-            m[last_idx]=idx;
+            auto it=find(a.begin(),a.end(),val);
+            a.erase(it);
             m.erase(val);
         return true;
         }
