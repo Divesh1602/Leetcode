@@ -2,7 +2,7 @@ class Solution {
 public:
     const int CHAR=256;
     int firstUniqChar(string s) {
-        int store[256]={0};
+       unordered_map<char,int> store;
         for(int i=0;i<s.length();i++)
             store[s[i]]++;
         for(int i=0;i<s.length();i++){
