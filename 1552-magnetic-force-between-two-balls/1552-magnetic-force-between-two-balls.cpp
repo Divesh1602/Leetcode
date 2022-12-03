@@ -1,25 +1,25 @@
 class Solution {
 public:
-    bool isvalid(int n,int k,vector<int>& stalls,int mid){
+    bool isvalid(int n,int m,vector<int>& position,int mid){
     int ct=1;
-    int cow=stalls[0];
+    int balls=position[0];
     for(int i=1;i<n;i++){
-        if(stalls[i]-cow>=mid){
+        if(position[i]-balls>=mid){
             ct++;
-            cow=stalls[i];
+            balls=position[i];
         }
     }
-    return(ct>=k);
+    return(ct>=m);
 }
-    int maxDistance(vector<int>& stalls, int k) {
+    int maxDistance(vector<int>& position, int m) {
          int ans=0;
-        int n=stalls.size();
+        int n=position.size();
         int i=1,j=0;
-        sort(stalls.begin(),stalls.end());
-        j=stalls[n-1];
+        sort(position.begin(),position.end());
+        j=position[n-1];
         while(i<=j){
             int mid=(i+j)/2;
-            if(isvalid(n,k,stalls,mid)){
+            if(isvalid(n,m,position,mid)){
                 ans=mid;
                 i=mid+1;
             }
