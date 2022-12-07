@@ -1,7 +1,7 @@
 class Solution {
 public:
     int numDifferentIntegers(string word) {
-       vector<string> s;
+       unordered_set<string> res;
         for(int i=0;i<word.length();i++){
             if(isdigit(word[i])==true){
                 while(word[i]=='0')
@@ -11,13 +11,10 @@ public:
                     ans+=word[i];
                     i++;
                 }
-                cout<<ans<<endl;
-                s.push_back(ans);
+                res.insert(ans);
             }
         }
-        unordered_set<string> res;
-        for(auto a:s)
-            res.insert(a);
+        
         return res.size();
     }
 };
