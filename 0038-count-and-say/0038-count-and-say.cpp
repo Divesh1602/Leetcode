@@ -10,7 +10,7 @@ public:
         
         for(int i = 3; i <= n; i++)
          {
-             str += '$';
+             str += '#';
              int len = str.length();
              
              int cnt = 1;
