@@ -25,8 +25,8 @@ while(i<j){
                 break;
             }
         }
-         for(int k=0;k<nums.size();k++){
-            if(nums[k]==a[j] && k!=b){
+         for(int k=nums.size()-1;k>=0;k--){
+            if(nums[k]==a[j]){
                 ans.push_back(k);
                 break;
             }
