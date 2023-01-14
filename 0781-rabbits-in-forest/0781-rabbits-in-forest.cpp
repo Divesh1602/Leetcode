@@ -16,9 +16,8 @@ public:
                 }
                 else{
                     int ct=a.second/sum;
-                    int st=sum;
-                    sum=ct*sum;
-                    ans+=sum+st;
+                    
+                    ans+=ct*sum+sum;
                 }
             }
                 
