@@ -10,7 +10,7 @@ public:
         for(int i=0;i<nums.size();i++){
             ct+=m[nums[i]];
             m[nums[i]]++;
-            while(ct>=k && j<=i){
+            while(ct>=k ){
                 if(m[nums[j]]>1){
                     ct-=m[nums[j]]-1;
                 }
