@@ -8,19 +8,8 @@
  */
 class Solution {
 public:
-     bool hasCycle(ListNode *head) {
-      ListNode* fast=head;
-        ListNode* slow=head;
-        while(fast!=NULL && fast->next!=NULL){
-            fast=fast->next->next;
-            slow=slow->next;
-            if(slow==fast)
-                return true;
-        }
-        return false;
-    }
     ListNode *detectCycle(ListNode *head) {
-       if(hasCycle(head)){
+      
            unordered_map<const ListNode*,int> m;
            ListNode* curr=head;
            while(curr!=NULL){
@@ -30,7 +19,7 @@ public:
                curr=curr->next;
                
            }
-       }
+       
         return NULL;
     }
 };
