@@ -10,29 +10,27 @@
  */
 class Solution {
 public:
-    ListNode* removeNodes(ListNode* head) {
+    ListNode* reverse(ListNode* head){
+        ListNode* prev=NULL;
         ListNode* curr=head;
-        vector<int> v;
         while(curr!=NULL){
-            v.push_back(curr->val);
-            curr=curr->next;
+            ListNode* temp=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=temp;
         }
-        vector<int> ans;
-        ans.push_back(v[v.size()-1]);
-        int mx=v[v.size()-1];
-        for(int i=v.size()-2;i>=0;i--){
-            if(v[i]>=mx){
-                ans.push_back(v[i]);
-                mx=v[i];
-            }
+        return prev;
+    }
+    ListNode* removeNodes(ListNode* head) {
+        head=reverse(head);
+        ListNode* curr=head;
+        while(curr!=NULL && curr->next!=NULL){
+            if(curr->val > curr->next->val)
+                curr->next=curr->next->next;
+            else
+                curr=curr->next;
         }
-        reverse(ans.begin(),ans.end());
-        curr=new ListNode(ans[0]);
-        head=curr;
-        for(int i=1;i<ans.size();i++){
-            curr->next=new ListNode(ans[i]);
-            curr=curr->next;
-        }
+        head=reverse(head);
         return head;
     }
 };
