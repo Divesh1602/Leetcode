@@ -32,10 +32,10 @@ public:
       
             int size=v.size();
             int i=0;
-            while(i<size && k!=0){
+            while(i<size && k--){
                 v[i]+=val;
                 i++;
-                k--;
+                
             }
        
     }
