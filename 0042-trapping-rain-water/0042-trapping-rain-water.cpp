@@ -1,29 +1,13 @@
 class Solution {
 public:
-    int trap(vector<int>& a) {
-        int n=a.size();
-         vector<long long int>left(n),right(n);
-        int val=a[0];
-        for(long long int i=0;i<n;i++){
-            if(val<a[i]){
-                val=a[i];
-            }
-            left[i]=val;
-        }
-        val=a[n-1];
-        for(long long int i=n-1;i>=0;i--){
-            if(val<a[i]){
-                val=a[i];
-            }
-            right[i]=val;
-        }
-        
-      
-        long long int ans=0;
-        for(long long int i=0;i<n;i++){
-            long long int mn=min(left[i],right[i])-a[i];
-            ans+= mn>=0?mn :0;
-        }
-        return ans;
+    int trap(vector<int>& h) {
+	int water = 0, l = 0, r = h.size()-1, lmax = INT_MIN, rmax = INT_MIN;
+	while(l < r){
+		lmax = max(h[l], lmax);
+		rmax = max(h[r], rmax);
+		water += (lmax < rmax) ? lmax-h[l++] : rmax-h[r--] ;
+	}
+	return water;
+
     }
 };
