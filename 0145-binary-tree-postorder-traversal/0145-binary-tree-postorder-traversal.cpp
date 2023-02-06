@@ -11,17 +11,13 @@
  */
 class Solution {
 public:
-    void making(TreeNode* root,vector<int>& ans){
-        if(root==NULL){
-            return;
-        }
-        making(root->left,ans);
-        making(root->right,ans);
-        ans.push_back(root->val);
-    }
+    vector<int> ans;
     vector<int> postorderTraversal(TreeNode* root) {
-        vector<int> ans;
-        making(root,ans);
+        if(root!=NULL){
+            postorderTraversal(root->left);
+            postorderTraversal(root->right);
+            ans.push_back(root->val);
+        }
         return ans;
     }
 };
