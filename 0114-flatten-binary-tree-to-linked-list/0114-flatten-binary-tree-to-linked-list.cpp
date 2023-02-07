@@ -11,28 +11,21 @@
  */
 class Solution {
 public:
-    stack<int> s;
-    stack<int> builtStack(TreeNode* root){
-        if(root!=NULL){
-            s.push(root->val);
-            builtStack(root->left);
-            builtStack(root->right);
+    TreeNode* helper(TreeNode* root){
+        if(root==NULL)
+            return NULL;
+        TreeNode* temp=root->right;
+        root->right=helper(root->left);
+        root->left=NULL;
+        
+        TreeNode* curr=root;
+        while(curr->right!=NULL){
+            curr=curr->right;
         }
-        return s;
+        curr->right=helper(temp);
+        return root;
     }
     void flatten(TreeNode* root) {
-        builtStack(root);
-       stack<int> rs;
-        while(!s.empty()){
-            rs.push(s.top());
-            s.pop();
-        }
-        rs.pop();
-        while(!rs.empty() && root){
-            root->left=NULL;
-            root->right=new TreeNode(rs.top());
-            root=root->right;
-            rs.pop();
-        }
+        helper(root);
     }
 };
