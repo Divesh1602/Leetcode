@@ -12,25 +12,25 @@
 class Solution {
 public:
     int preIndex=0;
-    TreeNode* BuildingTree(vector<int>& pre, vector<int>& in,int st,int en){
+    TreeNode* BuildingTree(vector<int>& pre, unordered_map<int,int> &m,int st,int en){
         if(st>en)
             return NULL;
         TreeNode* root=new TreeNode(pre[preIndex++]);
         
-        int index;
-        for(int i=st;i<=en;i++){
-            if(in[i]==root->val){
-                index=i;
-                break;
-            }
-        }
+        int val=root->val;
+        int index=m[val];
         
-        root->left=BuildingTree(pre,in,st,index-1);
-        root->right=BuildingTree(pre,in,index+1,en);
+        
+        
+        root->left=BuildingTree(pre,m,st,index-1);
+        root->right=BuildingTree(pre,m,index+1,en);
         return root;
-        
     }
     TreeNode* buildTree(vector<int>& preorder, vector<int>& inorder) {
-        return BuildingTree(preorder,inorder,0,preorder.size()-1);
+        unordered_map<int,int> m;
+        for(int i=0;i<inorder.size();i++){
+            m[inorder[i]]=i;
+        }
+        return BuildingTree(preorder,m,0,preorder.size()-1);
     }
 };
