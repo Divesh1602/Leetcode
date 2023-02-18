@@ -15,7 +15,7 @@ public:
         if(root==NULL) return;
         help(root->left);
         help(root->right);
-        //swap function
+        
         auto temp=root->left;
         root->left=root->right;
         root->right=temp;
