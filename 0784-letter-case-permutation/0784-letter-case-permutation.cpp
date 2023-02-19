@@ -1,34 +1,34 @@
 class Solution {
 public:
-void helper(string s ,int i, int n , vector<string> &ans){
-
-    if(i == n){
-        ans.push_back(s);
+    void helper(string& s,vector<string>& ans,string op,int i){
+        if(i==s.length()){
+            ans.push_back(op);
+            return;
+        }
+        if(s[i]>='a' && s[i]<='z'){
+            string op1=op;
+            op1+=s[i];
+            string op2=op;
+            op2+=toupper(s[i]);
+            helper(s,ans,op1,i+1);
+             helper(s,ans,op2,i+1);
+        }
+        else if(s[i]>='A' && s[i]<='Z'){
+            string op1=op;
+            op1+=s[i];
+            string op2=op;
+            op2+=tolower(s[i]);
+            helper(s,ans,op1,i+1);
+             helper(s,ans,op2,i+1);
+        }
+        else{
+            helper(s,ans,op+s[i],i+1);
+             }
         return;
     }
-
-    if(s[i] >= 'a' && s[i] <= 'z'){
-        string temp = s.substr(0,i) + char(s[i] - 32) + s.substr(i+1);
-		
-        helper(s,i+1,n,ans);
-        helper(temp,i+1,n,ans);
+    vector<string> letterCasePermutation(string s) {
+        vector<string> ans;
+        helper(s,ans,"",0);
+        return ans;
     }
-    else if(s[i] >= 'A' && s[i] <= 'Z'){
-        string temp = s.substr(0,i) + char(s[i] + 32) + s.substr(i+1);
-		
-        helper(s,i+1,n,ans);
-        helper(temp,i+1,n,ans);
-    }
-    else{
-        helper(s,i+1,n,ans);
-    }
-}
-
-vector<string> letterCasePermutation(string s) {
-    vector<string> ans;
-
-    helper(s,0,s.length(),ans);
-
-    return ans;
-}
 };
