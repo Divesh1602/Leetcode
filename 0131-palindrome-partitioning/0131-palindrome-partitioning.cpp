@@ -1,31 +1,31 @@
 class Solution {
 public:
-    void helper(string s, int start, vector<string>& temp, vector<vector<string>>& res)
-    {
-        if(start==s.length())
+    vector<vector<string>> partition(string s) {
+        vector<vector<string>> ans;
+        vector<string> path;
+        helper(0,s,ans,path);
+        return ans;
+    }
+    void helper(int idx,string s,vector<vector<string>>& ans,vector<string> path){
+        if(idx==s.size())
         {
-            res.push_back(temp);
+            ans.push_back(path);
             return;
         }
-        string str="";
-        for(int i=start; i<s.length(); i++)
-        {
-            str=s.substr(start, i-start+1);
-            string str1=str;
-            reverse(str.begin(), str.end());
-            if(str1==str)
-            {
-                temp.push_back(str);
-                helper(s, i+1, temp, res);
-                temp.pop_back();
+        for(int i=idx;i<s.size();i++){
+            if(isPossible(s,idx,i)){
+                path.push_back(s.substr(idx,i-idx+1));
+                helper(i+1,s,ans,path);
+                path.pop_back();
             }
         }
+        return;
     }
-    vector<vector<string>> partition(string s)
-    {
-        vector<vector<string>> res;
-        vector<string> temp;
-        helper(s, 0, temp, res);
-        return res;
+    bool isPossible(string s,int st,int en){
+        while(st<=en){
+            if(s[st++]!=s[en--])
+                return false;
+        }
+        return true;
     }
 };
