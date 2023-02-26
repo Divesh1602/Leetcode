@@ -1,20 +1,19 @@
 class Solution {
 public:
-    int helper(vector<int>& nums,int i,int j){
-        int con=0,ans=0;
-        for(int k=i;k<=j;k++){
-            int temp=ans;
-            if(nums[k]+con>ans)
-                ans=nums[k]+con;
-                
-                con=temp;
+      int helper(vector<int>& nums,int i,int n,vector<int>& dp){
+        if(i>n){
+            return 0;
         }
-        return ans;
+        if(dp[i]!=-1)
+            return dp[i];
+        
+       dp[i]=max(helper(nums,i+1,n,dp), helper(nums,i+2,n,dp)+nums[i]);
+        return dp[i];
     }
     int rob(vector<int>& nums) {
-        int n=nums.size();
-        if(n==1)
+        if(nums.size()==1)
             return nums[0];
-        return max(helper(nums,0,n-2),helper(nums,1,n-1));
+         vector<int> dp(nums.size(),-1),dp1(nums.size(),-1);
+        return max(helper(nums,0,nums.size()-2,dp),helper(nums,1,nums.size()-1,dp1));
     }
 };
