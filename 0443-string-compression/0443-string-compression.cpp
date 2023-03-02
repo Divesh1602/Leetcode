@@ -8,6 +8,8 @@ public:
         }
         reverse(c.begin(),c.end());
     }
+    
+    
     int compress(vector<char>& chars) {
         if(chars.size()==1)
             return chars.size();
@@ -33,34 +35,22 @@ public:
             
         }
         if(chars[chars.size()-1]==chars[chars.size()-2]){
-            
-            
-                    vector<char> c;
-                    getVector(c,ct);
-                    ans.push_back(chars[chars.size()-1]);
-                    for(auto a:c)
-                        ans.push_back(a);
+             vector<char> c;
+             getVector(c,ct);
+             ans.push_back(chars[chars.size()-1]);
+             for(auto a:c)
+             ans.push_back(a);
                    
                 
-            }
+        }
         
     else{
         ans.push_back(chars[chars.size()-1]);
     }
         
         
-        int n=chars.size();
-        int i;
-        for(i=0;i<ans.size();i++)
-            chars[i]=ans[i];
-        
-        i=n-i;
-        while(i--)
-            chars.pop_back();
+        chars=ans;
         return chars.size();
-        
 
-
-
-}  
+       }  
 };
