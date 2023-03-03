@@ -30,6 +30,7 @@ public:
         int n=haystack.length();
     vector<int> ans=prefix(needle,m);
         int i=0,j=0;
+        
         while(i<n){
             if(haystack[i]==needle[j]){
                 i++;
