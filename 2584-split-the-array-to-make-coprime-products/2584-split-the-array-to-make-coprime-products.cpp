@@ -5,7 +5,7 @@ public:
         for(auto num : nums)
             primeFactor(num, freqFactor);
         unordered_map<int, int>tillFactor;
-        for(int i = 0; i < nums.size(); i++){
+        for(int i = 0; i < nums.size()-1; i++){
             bool flag = true;
             primeFactor(nums[i], tillFactor);
             for(auto fact : tillFactor){
@@ -14,7 +14,7 @@ public:
                     break;
                 }
             }
-            if(flag == true && i != nums.size()-1)
+            if(flag == true)
                 return i;
         }    
         return -1;
