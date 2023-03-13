@@ -12,7 +12,6 @@
 class Solution {
 public:
     bool sol(TreeNode * rootl,TreeNode * rootr){
-        //base case
         if(rootl==NULL || rootr==NULL){
             if(rootl==NULL && rootr==NULL){
             return true;
