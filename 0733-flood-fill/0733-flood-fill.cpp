@@ -1,27 +1,36 @@
 class Solution {
 public:
     vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
-        const auto r = image.size();
-        const auto c = image[0].size();
-        const auto cc = image[sr][sc];
-        queue<pair<int, int>> q;
-        if (image[sr][sc] != color) {
-            q.emplace(sr, sc);
-        }
-        while (!q.empty()) {
-            auto point = q.front(); q.pop();
-            image[point.first][point.second] = color;
-            if (point.first > 0 && image[point.first - 1][point.second] == cc) {
-                q.emplace(point.first - 1, point.second);
+        int n=image.size(),m=image[0].size();
+        int ele=image[sr][sc];
+        queue<pair<int,int>> q;
+        q.push({sr,sc});
+        image[sr][sc]=color;
+        vector<vector<int>> vis(n,vector<int>(m,0));
+        vis[sr][sc]=1;
+        while(!q.empty()){
+            int row=q.front().first;
+            int col=q.front().second;
+            q.pop();
+            if(row+1<n && image[row+1][col]==ele && !vis[row+1][col]){
+                image[row+1][col]=color;
+                vis[row+1][col]=1;
+                q.push({row+1,col});
             }
-            if (point.second > 0 && image[point.first][point.second - 1] == cc) {
-                q.emplace(point.first, point.second - 1);
+            if(row-1>=0 && image[row-1][col]==ele && !vis[row-1][col]){
+                image[row-1][col]=color;
+                vis[row-1][col]=1;
+                q.push({row-1,col});
             }
-            if (point.first < r - 1 && image[point.first + 1][point.second] == cc) {
-                q.emplace(point.first + 1, point.second);
+            if(col-1>=0 && image[row][col-1]==ele && !vis[row][col-1]){
+                image[row][col-1]=color;
+                 vis[row][col-1]=1;
+                q.push({row,col-1});
             }
-            if (point.second < c - 1 && image[point.first][point.second + 1] == cc) {
-                q.emplace(point.first, point.second + 1);
+            if(col+1<m && image[row][col+1]==ele && !vis[row][col+1]){
+                image[row][col+1]=color;
+                vis[row][col+1]=1;
+                q.push({row,col+1});
             }
         }
         return image;
