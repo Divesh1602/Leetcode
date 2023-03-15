@@ -8,14 +8,6 @@ using namespace std;
 // User function Template for C++
 class Solution {
     private:
-    void topo(int node,vector<int> adj[],vector<int>& vis,stack<int>& st){
-        vis[node]=1;
-        for(auto a:adj[node]){
-            if(!vis[a])
-            topo(a,adj,vis,st);
-        }
-        st.push(node);
-    }
   public:
     vector<int> shortestPath(vector<vector<int>>& edges, int n,int m, int src){
         // code here
@@ -24,12 +16,9 @@ class Solution {
             adj[edges[i][0]].push_back(edges[i][1]);
             adj[edges[i][1]].push_back(edges[i][0]);
         }
-        stack<int> st;
+        
         vector<int> vis(n,0);
-        for(int i=0;i>n;i++){
-            if(!vis[i])
-            topo(i,adj,vis,st);
-        }
+        
         
         vector<int> dis(n);
         for(int i=0;i<n;i++)
