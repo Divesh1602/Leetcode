@@ -15,20 +15,20 @@ class Solution
         for(int i=0;i<v;i++)
         dis[i]=1e9;
         dis[s]=0;
-        priority_queue<int,vector<int>,greater<int> > q;
-        q.push(s);
+       set<int> q;
+        q.insert(s);
         
         while(!q.empty()){
            
-            int node=q.top();
-            q.pop();
+            int node=*q.begin();
+            q.erase(node);
             
             for(auto a:adj[node]){
                 int u=a[0];
                 int wt=a[1];
                 if(dis[u]>dis[node]+wt){
                     dis[u]=dis[node]+wt;
-                    q.push(u);
+                    q.insert(u);
                 }
             }
         }
