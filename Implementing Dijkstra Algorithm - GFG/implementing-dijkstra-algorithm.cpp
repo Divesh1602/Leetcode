@@ -15,20 +15,21 @@ class Solution
         for(int i=0;i<v;i++)
         dis[i]=1e9;
         dis[s]=0;
-       set<int> q;
-        q.insert(s);
+       set<pair<int,int>> q;
+        q.insert({0,s});
         
         while(!q.empty()){
-           
-            int node=*q.begin();
-            q.erase(node);
+            auto it=*(q.begin());
+            int d=it.first;
+            int node=it.second;
+            q.erase(it);
             
             for(auto a:adj[node]){
                 int u=a[0];
                 int wt=a[1];
-                if(dis[u]>dis[node]+wt){
-                    dis[u]=dis[node]+wt;
-                    q.insert(u);
+                if(dis[u]>d+wt){
+                    dis[u]=d+wt;
+                    q.insert({dis[u],u});
                 }
             }
         }
