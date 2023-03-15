@@ -15,6 +15,7 @@ class Solution {
             topo(a.first,adj,vis,st);
         }
         st.push(node);
+        return;
     }
   public:
      vector<int> shortestPath(int n,int m, vector<vector<int>>& edges){
@@ -26,7 +27,7 @@ class Solution {
         
         stack<int> st;
         vector<int> vis(n,0);
-        for(int i=0;i>n;i++){
+        for(int i=0;i<n;i++){
             if(!vis[i])
             topo(i,adj,vis,st);
         }
@@ -35,7 +36,9 @@ class Solution {
         for(int i=0;i<n;i++)
         dis[i]=1e9;
         dis[0]=0;
-        for(int i=0;i<n;i++){
+        while(!st.empty()){
+            int i=st.top();
+            st.pop();
             for(auto a:adj[i]){
             int v=a.first;
             int wt=a.second;
