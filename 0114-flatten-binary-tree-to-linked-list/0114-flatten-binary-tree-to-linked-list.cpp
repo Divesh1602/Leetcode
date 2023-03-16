@@ -12,16 +12,15 @@
 class Solution {
 public:
     TreeNode* helper(TreeNode* root){
-        if(root==NULL)
+        if(!root)
             return NULL;
         TreeNode* temp=root->right;
         root->right=helper(root->left);
         root->left=NULL;
-        
         TreeNode* curr=root;
-        while(curr->right!=NULL){
+        while(curr->right)
             curr=curr->right;
-        }
+        
         curr->right=helper(temp);
         return root;
     }
