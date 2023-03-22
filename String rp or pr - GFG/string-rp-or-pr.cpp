@@ -34,7 +34,7 @@ public:
             st.push(s[i]);
       }
       stack<char> st1;
-      while(st.size() && x!=y){ 
+      while(st.size()){ 
           if(st.top()=='r' && st1.size() && st1.top()=='p'){
             ans+=y;
             st1.pop();
