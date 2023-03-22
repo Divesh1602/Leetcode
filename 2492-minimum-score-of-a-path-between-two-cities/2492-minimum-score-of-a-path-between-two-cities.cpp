@@ -7,19 +7,15 @@ public:
             adj[a[1]].push_back({a[0],a[2]});
         }
         
-        queue<pair<int,int>> q;
+        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> q;
         vector<int> dis(n+1,INT_MAX);
-        // for(int i=1;i<n+1;i++){
-        //     for(auto a:adj[i]){
-        //         dis[a.first]=a.second;
-        //     }
-        // }
+       
        
         q.push({1,INT_MAX});
-        dis[1]=INT_MAX;
+     
         while(!q.empty()){
-            int i=q.front().first;
-            int d=q.front().second;
+            int i=q.top().first;
+            int d=q.top().second;
             
             q.pop();
             
