@@ -5,14 +5,17 @@ public:
         int ans=INT_MAX;
         while(i<=j){
             int mid=i+(j-i)/2;
-           ans=min(ans,nums[mid]);
-            if(nums[i]==nums[mid] && nums[j]==nums[mid])
-                i++,j--;
+            ans=min(ans,nums[mid]);
+            if(nums[mid]==nums[i] && nums[mid]==nums[j])
+                {
+                i++;
+                j--;
+            }
             
-            else if(nums[mid]>nums[j])
-                i=mid+1;
-            else
+            else if(nums[j]>=nums[mid])
                 j=mid-1;
+            else
+                i=mid+1;
         }
         return ans;
     }
