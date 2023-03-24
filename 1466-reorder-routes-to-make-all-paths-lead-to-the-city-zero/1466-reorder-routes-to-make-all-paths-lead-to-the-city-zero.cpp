@@ -18,7 +18,7 @@ public:
            for(auto& [x,y]:adj[idx]){
                if(!vis[x]){
                    if(y<0)
-                       ans+=-y;
+                       ans++;
                    vis[x]=1;
                    q.push(x);
                }
