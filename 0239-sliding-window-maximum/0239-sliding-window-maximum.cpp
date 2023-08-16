@@ -19,8 +19,7 @@ public:
                 ans.push_back(dq.front());
                 if(dq.front()==nums[i])
                     dq.pop_front();
-                i++;
-                
+                i++;  
                 j++;
             }
         }
